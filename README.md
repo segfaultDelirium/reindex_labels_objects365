@@ -7,7 +7,7 @@ how to use it?
 
 first run: ./create_input_output_dirs.sh
 
-then copy label files into input/labels/train2017 or input/labels/val2017
+then copy label files into input/labels/
 
 to run the program:
 
