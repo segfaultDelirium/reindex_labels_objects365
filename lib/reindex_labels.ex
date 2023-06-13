@@ -41,20 +41,38 @@ defmodule ReindexLabels do
   end
 
   def main() do
-
     reindex_mapping = get_reindex_mapping()
     classes19 = get_classes19()
-    train_label_filenames = Path.wildcard("input/labels/train2017/*.txt")
-    val_label_filenames = Path.wildcard("input/labels/val2017/*.txt")
+    # train_label_filenames = Path.wildcard("input/labels/train2017/*.txt")
+    # val_label_filenames = Path.wildcard("input/labels/val2017/*.txt")
+    train2007_label_filenames =
+      Path.wildcard("input/labels/train2007/*.txt")
 
-    process_filenames(train_label_filenames, classes19, reindex_mapping)
-    process_filenames(val_label_filenames, classes19, reindex_mapping)
+    train2012_label_filenames =
+      Path.wildcard("input/labels/train2012/*.txt")
+
+    val2007_label_filenames =
+      Path.wildcard("input/labels/val2007/*.txt")
+
+    val2012_label_filenames =
+      Path.wildcard("input/labels/val2012/*.txt")
+
+    test2007_label_filenames =
+      Path.wildcard("input/labels/test2007/*.txt") 
+
+    process_filenames(train2007_label_filenames, classes19, reindex_mapping)
+    process_filenames(train2012_label_filenames, classes19, reindex_mapping)
+    process_filenames(val2007_label_filenames, classes19, reindex_mapping)
+    process_filenames(val2012_label_filenames, classes19, reindex_mapping)
+    process_filenames(test2007_label_filenames, classes19, reindex_mapping)
   end
 
   def process_filenames(filenames, classes19, reindex_mapping) do
     filenames
     |> Enum.map(fn filename ->
-      new_file_content = filename |> File.read!() |> process_label_file(classes19, reindex_mapping)
+      new_file_content =
+        filename |> File.read!() |> process_label_file(classes19, reindex_mapping)
+
       new_filename = filename |> String.replace("input", "output")
       File.write(new_filename, new_file_content)
     end)
@@ -75,55 +93,53 @@ defmodule ReindexLabels do
     |> Enum.join("\n")
   end
 
-
   def get_reindex_mapping() do
-     %{
-      "0" => "0",
+    %{
+      "14" => "0",
       "1" => "1",
-      "2" => "2",
-      "3" => "3",
-      "4" => "4",
+      "6" => "2",
+      "13" => "3",
+      "0" => "4",
       "5" => "5",
-      "6" => "6",
-      "8" => "7",
-      "14" => "8",
-      "15" => "9",
-      "16" => "10",
-      "17" => "11",
-      "19" => "12",
-      "39" => "13",
-      "56" => "14",
-      "57" => "15",
-      "58" => "16",
-      "60" => "17",
-      "18" => "18",
-      "62" => "19"
+      "18" => "6",
+      "3" => "7",
+      "2" => "8",
+      "7" => "9",
+      "11" => "10",
+      "12" => "11",
+      "9" => "12",
+      "4" => "13",
+      "8" => "14",
+      "17" => "15",
+      "15" => "16",
+      "10" => "17",
+      "16" => "18",
+      "19" => "19"
     }
-
   end
-  
+
   def get_classes19() do
-     [
-      "0",
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "8",
+    [
       "14",
-      "15",
-      "16",
-      "17",
-      "19",
-      "39",
-      "56",
-      "57",
-      "58",
-      "60",
+      "1",
+      "6",
+      "13",
+      "0",
+      "5",
       "18",
-      "62"
+      "3",
+      "2",
+      "7",
+      "11",
+      "12",
+      "9",
+      "4",
+      "8",
+      "17",
+      "15",
+      "10",
+      "16",
+      "19"
     ]
   end
 end

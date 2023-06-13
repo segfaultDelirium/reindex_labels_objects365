@@ -24,7 +24,20 @@ reindex_labels-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
-/input/labels/train2017/*
-/input/labels/val2017/*
-/output/labels/train2017/*
-/output/labels/val2017/
+# /input/labels/train2017/*
+# /input/labels/val2017/*
+# /output/labels/train2017/*
+# /output/labels/val2017/
+
+/input/labels/test2007/*.txt
+/input/labels/train2007/*.txt
+/input/labels/train2012/*.txt
+/input/labels/val2007/*.txt
+/input/labels/val2012/*.txt
+
+/output/labels/test2007/*.txt
+/output/labels/train2007/*.txt
+/output/labels/train2012/*.txt
+/output/labels/val2007/*.txt
+/output/labels/val2012/*.txt
+
