@@ -29,15 +29,9 @@ reindex_labels-*.tar
 # /output/labels/train2017/*
 # /output/labels/val2017/
 
-/input/labels/test2007/*.txt
-/input/labels/train2007/*.txt
-/input/labels/train2012/*.txt
-/input/labels/val2007/*.txt
-/input/labels/val2012/*.txt
+/input/labels/train/*.txt
+/input/labels/val/*.txt
 
-/output/labels/test2007/*.txt
-/output/labels/train2007/*.txt
-/output/labels/train2012/*.txt
-/output/labels/val2007/*.txt
-/output/labels/val2012/*.txt
+/output/labels/train/*.txt
+/output/labels/val/*.txt
 

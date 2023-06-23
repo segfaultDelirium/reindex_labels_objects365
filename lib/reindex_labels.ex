@@ -43,28 +43,12 @@ defmodule ReindexLabels do
   def main() do
     reindex_mapping = get_reindex_mapping()
     classes19 = get_classes19()
-    # train_label_filenames = Path.wildcard("input/labels/train2017/*.txt")
-    # val_label_filenames = Path.wildcard("input/labels/val2017/*.txt")
-    train2007_label_filenames =
-      Path.wildcard("input/labels/train2007/*.txt")
+    train_label_filenames = Path.wildcard("input/labels/train/*.txt")
 
-    train2012_label_filenames =
-      Path.wildcard("input/labels/train2012/*.txt")
+    val_label_filenames = Path.wildcard("input/labels/val/*.txt")
 
-    val2007_label_filenames =
-      Path.wildcard("input/labels/val2007/*.txt")
-
-    val2012_label_filenames =
-      Path.wildcard("input/labels/val2012/*.txt")
-
-    test2007_label_filenames =
-      Path.wildcard("input/labels/test2007/*.txt") 
-
-    process_filenames(train2007_label_filenames, classes19, reindex_mapping)
-    process_filenames(train2012_label_filenames, classes19, reindex_mapping)
-    process_filenames(val2007_label_filenames, classes19, reindex_mapping)
-    process_filenames(val2012_label_filenames, classes19, reindex_mapping)
-    process_filenames(test2007_label_filenames, classes19, reindex_mapping)
+    process_filenames(train_label_filenames, classes19, reindex_mapping)
+    process_filenames(val_label_filenames, classes19, reindex_mapping)
   end
 
   def process_filenames(filenames, classes19, reindex_mapping) do
@@ -95,51 +79,51 @@ defmodule ReindexLabels do
 
   def get_reindex_mapping() do
     %{
-      "14" => "0",
-      "1" => "1",
-      "6" => "2",
-      "13" => "3",
-      "0" => "4",
-      "5" => "5",
-      "18" => "6",
-      "3" => "7",
-      "2" => "8",
-      "7" => "9",
-      "11" => "10",
-      "12" => "11",
-      "9" => "12",
-      "4" => "13",
-      "8" => "14",
-      "17" => "15",
-      "15" => "16",
-      "10" => "17",
-      "16" => "18",
-      "19" => "19"
+      "0" => "0",
+      "46" => "1",
+      "5" => "2",
+      "58" => "3",
+      "114" => "4",
+      "55" => "5",
+      "116" => "6",
+      "21" => "7",
+      "56" => "8",
+      "139" => "9",
+      "92" => "10",
+      "78" => "11",
+      "96" => "12",
+      "8" => "13",
+      "2" => "14",
+      "50" => "15",
+      "25" => "16",
+      "98" => "17",
+      "99" => "18",
+      "37" => "19"
     }
   end
 
   def get_classes19() do
     [
-      "14",
-      "1",
-      "6",
-      "13",
       "0",
+      "46",
       "5",
-      "18",
-      "3",
-      "2",
-      "7",
-      "11",
-      "12",
-      "9",
-      "4",
+      "58",
+      "114",
+      "55",
+      "116",
+      "21",
+      "56",
+      "139",
+      "92",
+      "78",
+      "96",
       "8",
-      "17",
-      "15",
-      "10",
-      "16",
-      "19"
+      "2",
+      "50",
+      "25",
+      "98",
+      "99",
+      "37"
     ]
   end
 end
